@@ -18,7 +18,7 @@ public class CustomRestClientFactoryBean implements FactoryBean<RestClient> {
 
     @Override
     public RestClient getObject() throws Exception {
-        restClient= RestClient.builder()
+        return restClient= RestClient.builder()
                 .defaultStatusHandler(HttpStatusCode::is4xxClientError, (request, response) -> {
                     System.err.println("did you malform your request?");
                     throw new MalformedURLException();
