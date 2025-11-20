@@ -1,3 +1,8 @@
 spring:
   application:
     name: sukrosono
+
+
+frankfurter:
+  baseUrl: https://api.frankfurter.app/
+  timeout: 60
