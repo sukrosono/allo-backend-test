@@ -4,5 +4,7 @@ spring:
 
 
 frankfurter:
-  baseUrl: https://api.frankfurter.app/
+  baseUrl: https://api.frankfurter.dev/v1/
+  base-currency: IDR
+  target-currency: USD
   timeout: 60
