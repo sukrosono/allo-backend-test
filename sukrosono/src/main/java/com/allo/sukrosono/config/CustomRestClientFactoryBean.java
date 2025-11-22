@@ -2,30 +2,25 @@ package com.allo.sukrosono.config;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.client                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  .RestClient;
 
-import java.net.MalformedURLException;
-import java.net.UnknownHostException;
-
-
+@Configuration
 public class CustomRestClientFactoryBean implements FactoryBean<RestClient> {
-    @Value("frankfurter.baseUrl")
+    @Value("${frankfurter.baseUrl}")
     private String baseUrl;
-
-    private RestClient restClient;
-
 
     @Override
     public RestClient getObject() throws Exception {
-        return restClient= RestClient.builder()
+        return RestClient.builder()
                 .defaultStatusHandler(HttpStatusCode::is4xxClientError, (request, response) -> {
-                    System.err.println("did you malform your request?");
-                    throw new MalformedURLException();
+                    System.err.println("did you malform your request?"+ request);
+                    throw new IllegalStateException("our error "+ response.getStatusCode());
                 })
                 .defaultStatusHandler(HttpStatusCode::is5xxServerError, (request, response) -> {
                     System.err.println("It looks the 3rd party server is misbehave");
-                    throw new UnknownHostException();
+                    throw new IllegalStateException("Their error "+ response.getStatusCode());
                 })
                 .baseUrl(baseUrl) // customizable timeout header etc
                 .build();
