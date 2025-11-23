@@ -1,7 +1,7 @@
 spring:
   application:
     name: sukrosono
-
+    final-factor: 0.000110
 
 frankfurter:
   baseUrl: https://api.frankfurter.app/
