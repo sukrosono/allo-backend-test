@@ -34,7 +34,6 @@ public class SupportedCurrencyService implements ResourceAcquire<SupportedCurren
     @Override
     public void initCache() {
         cachedSupportedCurrencyResponse = fetch();
-        System.out.println("cached: "+ cachedSupportedCurrencyResponse);
     }
 
     @Override

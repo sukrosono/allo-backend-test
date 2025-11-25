@@ -1,7 +1,6 @@
 package com.allo.sukrosono;
 
 import com.allo.sukrosono.intf.ResourceAcquire;
-import jakarta.annotation.PostConstruct;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -20,10 +19,6 @@ public class BoostrapService implements CommandLineRunner {
                 Function.identity()
         ));
     }
-
-//    @PostConstruct
-//    public void populateCache() {
-//    }
 
     @Override
     public void run(String... args) {
