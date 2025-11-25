@@ -21,14 +21,14 @@ public class BoostrapService implements CommandLineRunner {
         ));
     }
 
-    @PostConstruct
-    public void populateCache() {
-        acquireStrategies.values()
-                .forEach(ResourceAcquire::initCache);
-    }
+//    @PostConstruct
+//    public void populateCache() {
+//    }
 
     @Override
     public void run(String... args) {
+        acquireStrategies.values()
+                .forEach(ResourceAcquire::initCache);
     }
 
     public Map<String, ResourceAcquire<?>> getAcquireStrategies() {
